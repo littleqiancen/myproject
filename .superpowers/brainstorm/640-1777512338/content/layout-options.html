@@ -1,0 +1,84 @@
+<h2>布局结构调整方案</h2>
+<p class="subtitle">3 种方向，选一个最符合你预期的</p>
+
+<div class="options">
+  <div class="option" data-choice="slim-sidebar" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>精简侧边栏（推荐）</h3>
+      <p>左侧边栏从 220px 收窄到 64px，只保留图标；点击后展开为 200px 显示文字。顶部 header 去掉面包屑，改为项目标题 + 全局搜索 + 用户操作区。主内容区背景改为纯白，卡片用 12px 大圆角 + 柔和阴影。</p>
+      <div class="mockup" style="margin-top:12px">
+        <div style="display:flex;height:120px;border-radius:8px;overflow:hidden;font-size:11px">
+          <div style="width:28px;background:#7B61FF;color:#fff;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:8px">
+            <div>◆</div>
+            <div>📁</div>
+            <div>⚙</div>
+          </div>
+          <div style="flex:1;background:#fff;display:flex;flex-direction:column">
+            <div style="height:24px;background:#fafafa;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between;padding:0 8px">
+              <span>CaseGen</span>
+              <span>🔍  +  👤</span>
+            </div>
+            <div style="flex:1;padding:8px">
+              <div style="background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:60px;padding:6px">项目卡片区域</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:8px;font-size:12px">
+        <div class="pros"><h4>优点</h4><ul><li>保留现有导航习惯</li><li>内容区空间最大</li><li>改造量适中</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>菜单文字需 hover 才显示</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="top-nav" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>顶部导航</h3>
+      <p>彻底去掉左侧边栏，改用顶部水平导航栏（Logo + 项目管理 / 系统设置 + 紫色主按钮）。页面更开阔、更像现代 SaaS。主内容区从顶部导航下方开始，纯白背景。</p>
+      <div class="mockup" style="margin-top:12px">
+        <div style="height:120px;border-radius:8px;overflow:hidden;font-size:11px;background:#fff;border:1px solid #eee">
+          <div style="height:28px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;gap:12px;padding:0 8px">
+            <span style="color:#7B61FF;font-weight:bold">◆ CaseGen</span>
+            <span>项目管理</span>
+            <span>系统设置</span>
+            <span style="margin-left:auto;background:#7B61FF;color:#fff;padding:2px 8px;border-radius:4px">+ 新建</span>
+          </div>
+          <div style="padding:8px">
+            <div style="background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:60px;padding:6px">项目卡片区域</div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:8px;font-size:12px">
+        <div class="pros"><h4>优点</h4><ul><li>最现代、最开阔</li><li>移动端适配更容易</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>导航项少时顶部显空</li><li>改变现有操作习惯</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="hybrid" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>可折叠混合</h3>
+      <p>侧边栏默认保持 180px 显示图标+文字，但视觉上更轻盈（紫色顶部的品牌区 + 白色菜单区）。提供一个折叠按钮可收至 64px。顶部完全去掉 header，把面包屑和页面标题融入内容区顶部。整体信息密度降低，留白增加。</p>
+      <div class="mockup" style="margin-top:12px">
+        <div style="display:flex;height:120px;border-radius:8px;overflow:hidden;font-size:11px">
+          <div style="width:50px;background:linear-gradient(180deg,#7B61FF 30%,#fff 30%);display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:6px;border-right:1px solid #f0f0f0">
+            <div style="color:#fff;font-weight:bold">◆</div>
+            <div style="font-size:9px">📁 项目</div>
+            <div style="font-size:9px">⚙ 设置</div>
+          </div>
+          <div style="flex:1;background:#fff;padding:8px">
+            <div style="font-size:10px;color:#999;margin-bottom:4px">首页 / 项目详情</div>
+            <div style="background:#fff;border:1px solid #f0f0f0;border-radius:8px;height:60px;padding:6px">内容区域</div>
+          </div>
+        </div>
+      </div>
+      <div class="pros-cons" style="margin-top:8px;font-size:12px">
+        <div class="pros"><h4>优点</h4><ul><li>灵活性最高</li><li>用户可控信息密度</li></ul></div>
+        <div class="cons"><h4>缺点</h4><ul><li>实现复杂度稍高</li><li>需要处理折叠状态持久化</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+{
+  "DEFAULT_LLM_MODEL": "openai/Pro/MiniMaxAI/MiniMax-M2.5",
+  "OPENAI_API_KEY": "sk-ozupnymqigxjntrczuljndytakvpukjvqeuuyuxayfatpgnb",
+  "LLM_API_BASE": "https://api.siliconflow.cn/v1",
+  "FEISHU_WEBHOOK_URL": "https://open.feishu.cn/open-apis/bot/v2/hook/cf02c4ec-d2d9-44a4-b1cd-b7d3c073b3fc"
+}

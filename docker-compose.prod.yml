@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  backend:
+    image: ${BACKEND_IMAGE}:${IMAGE_TAG:-latest}
+    container_name: casegen-backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    volumes:
+      - ./data/uploads:/app/uploads
+      - ./data/data:/app/data
+      - ./data/settings.json:/app/settings.json
+
+  frontend:
+    image: ${FRONTEND_IMAGE}:${IMAGE_TAG:-latest}
+    container_name: casegen-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-80}:80"
+    depends_on:
+      - backend

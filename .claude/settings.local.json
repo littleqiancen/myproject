@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\(''backend/app/services/ai/test_point_extractor.py''\\).read\\(\\)\\); print\\(''OK''\\)\")",
+      "Bash(sqlite3 /Users/lucas/CaseGenerateProject/backend/casegen.db \"SELECT id, filename, length\\(parsed_markdown\\) as md_len FROM documents ORDER BY created_at DESC LIMIT 5;\")"
+    ]
+  }
+}
