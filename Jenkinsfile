@@ -68,10 +68,11 @@ pipeline {
           set -e
           mkdir -p "${DEPLOY_DIR}"
           cp -f "${COMPOSE_FILE}" "${DEPLOY_DIR}/${COMPOSE_FILE}"
-          mkdir -p "${DEPLOY_DIR}/data/uploads" "${DEPLOY_DIR}/data/data"
-          if [ ! -f "${DEPLOY_DIR}/data/settings.json" ]; then
-            echo "{}" > "${DEPLOY_DIR}/data/settings.json"
-          fi
+          docker run --rm \
+            -v "${DEPLOY_DIR}/data:/data" \
+            --entrypoint bash \
+            jenkins/jenkins:lts \
+            -lc 'set -e; mkdir -p /data/uploads /data/data; if [ ! -f /data/settings.json ]; then echo "{}" > /data/settings.json; fi'
           if [ ! -f "${DEPLOY_DIR}/.env" ]; then
             echo "BACKEND_PORT=8000" > "${DEPLOY_DIR}/.env"
             echo "FRONTEND_PORT=80" >> "${DEPLOY_DIR}/.env"
@@ -82,8 +83,8 @@ pipeline {
           export BACKEND_IMAGE="${BACKEND_IMAGE}"
           export FRONTEND_IMAGE="${FRONTEND_IMAGE}"
           export IMAGE_TAG="${IMAGE_TAG}"
-          docker compose -f "${COMPOSE_FILE}" pull
-          docker compose -f "${COMPOSE_FILE}" up -d
+          docker-compose -f "${COMPOSE_FILE}" pull
+          docker-compose -f "${COMPOSE_FILE}" up -d
         '''
       }
     }
