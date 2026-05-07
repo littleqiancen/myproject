@@ -12,12 +12,17 @@ pipeline {
 
   options {
     timestamps()
+    skipDefaultCheckout(true)
   }
 
   stages {
     stage('Checkout') {
       steps {
-        checkout scm
+        timeout(time: 10, unit: 'MINUTES') {
+          retry(5) {
+            checkout scm
+          }
+        }
       }
     }
 
