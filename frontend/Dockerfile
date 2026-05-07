@@ -2,7 +2,10 @@ FROM node:20-alpine as build
 
 WORKDIR /app
 
+ARG NPM_REGISTRY=https://registry.npmmirror.com
+
 COPY package.json ./
+RUN npm config set registry "${NPM_REGISTRY}"
 RUN npm install
 
 COPY . .
