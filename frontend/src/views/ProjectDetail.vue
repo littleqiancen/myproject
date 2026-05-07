@@ -839,7 +839,7 @@ watch(() => props.id, () => {
   isGeneratingCases.value = false
   showProgress.value = false
   currentBatchId.value = ''
-  currentBatchType.value = ''
+  currentBatchType.value = 'extract'
   // 重新加载新项目数据
   loadProject()
   loadDocuments()
